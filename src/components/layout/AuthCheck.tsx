@@ -3,7 +3,7 @@ import Unauthorised from "./Unauthorised";
 import Authorised from "./Authorised";
 
 const AuthCheck = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   return isLoggedIn ? <Authorised /> : <Unauthorised />;
 };
 

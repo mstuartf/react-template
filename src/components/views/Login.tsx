@@ -5,8 +5,10 @@ import ControlledInput from "../atoms/ControlledInput";
 import { useDispatch, useSelector } from "react-redux";
 import { loginRequest } from "../../store/slices/account/actions";
 import { selectLoginPending } from "../../store/slices/account/selectors";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -27,18 +29,18 @@ const Login = () => {
       >
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Email Address
+            {t("views.login.emailLabel")}
           </label>
           <ControlledInput
             defaultValue={email}
             onChange={setEmail}
             type="email"
-            placeholder="test@test.com"
+            placeholder={t("views.login.emailPlaceholder")}
           />
         </div>
         <div className="mb-6">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Password
+            {t("views.login.passwordLabel")}
           </label>
           <ControlledInput
             defaultValue={password}
@@ -49,13 +51,18 @@ const Login = () => {
         </div>
         <div className="flex items-center justify-between">
           <Btn isDisabled={loginPending} type="submit">
-            {loginPending ? "Loading..." : "Sign In"}
+            {loginPending
+              ? t("shared.loadingState")
+              : t("views.login.submitButton")}
           </Btn>
-          <PlainLink to="https://www.google.com">Forgot Password?</PlainLink>
+          <PlainLink to="https://www.google.com">
+            {t("views.login.forgotPasswordLink")}
+          </PlainLink>
         </div>
       </form>
-      <p className="text-center text-gray-500 text-xs">
-        Don't have an account? <PlainLink to="/sign-up">Click here</PlainLink>.
+      <p className="text-center text-gray-500 text-sm">
+        {t("views.login.noAccountQuestion")}&nbsp;
+        <PlainLink to="/sign-up">{t("views.login.noAccountLink")}</PlainLink>.
       </p>
     </>
   );

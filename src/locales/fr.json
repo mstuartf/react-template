@@ -1,0 +1,38 @@
+{
+  "banner": {
+    "verificationRequired": ""
+  },
+  "home": {
+    "pageTitle": ""
+  },
+  "page1": {
+    "pageTitle": ""
+  },
+  "navBar": {
+    "logoutButton": ""
+  },
+  "views": {
+    "login": {
+      "emailLabel": "",
+      "emailPlaceholder": "",
+      "passwordLabel": "",
+      "submitButton": "",
+      "forgotPasswordLink": "",
+      "noAccountQuestion": "",
+      "noAccountLink": ""
+    },
+    "signUp": {
+      "nameLabel": "",
+      "namePlaceholder": "",
+      "emailLabel": "",
+      "emailPlaceholder": "",
+      "passwordLabel": "",
+      "submitButton": "",
+      "existingAccountQuestion": "",
+      "existingAccountLink": ""
+    }
+  },
+  "shared": {
+    "loadingState": ""
+  }
+}

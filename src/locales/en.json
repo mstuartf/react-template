@@ -1,0 +1,38 @@
+{
+  "banner": {
+    "verificationRequired": "Placeholder verification banner"
+  },
+  "home": {
+    "pageTitle": "Home"
+  },
+  "page1": {
+    "pageTitle": "Page 1"
+  },
+  "navBar": {
+    "logoutButton": "Logout"
+  },
+  "views": {
+    "login": {
+      "emailLabel": "Email",
+      "emailPlaceholder": "mr@test.com",
+      "passwordLabel": "Password",
+      "submitButton": "Sign in",
+      "forgotPasswordLink": "Forgot password?",
+      "noAccountQuestion": "Don't have an account?",
+      "noAccountLink": "Click here"
+    },
+    "signUp": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Mr Test",
+      "emailLabel": "Email",
+      "emailPlaceholder": "mr@test.com",
+      "passwordLabel": "Password",
+      "submitButton": "Creat an account",
+      "existingAccountQuestion": "Already have an account?",
+      "existingAccountLink": "Click here"
+    }
+  },
+  "shared": {
+    "loadingState": "Loading..."
+  }
+}

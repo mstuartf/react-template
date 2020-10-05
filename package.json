@@ -16,10 +16,12 @@
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/reselect": "^2.2.0",
     "autoprefixer": "^10.0.1",
+    "i18next": "^19.8.1",
     "postcss-cli": "^8.0.0",
     "query-string": "^6.12.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-i18next": "^11.7.3",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
@@ -36,6 +38,7 @@
     "tailwindcss": "^1.8.10"
   },
   "scripts": {
+    "translate": "npx i18next-parser",
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "start": "npm run build:style && react-scripts start",
     "build": "react-scripts build",

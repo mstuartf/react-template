@@ -6,6 +6,7 @@ import "./styles/tailwind.css";
 import { configureStore } from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
+import "./i18n";
 
 const store = configureStore();
 

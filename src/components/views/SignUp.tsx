@@ -5,8 +5,10 @@ import PlainLink from "../atoms/PlainLink";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSignUpPending } from "../../store/slices/account/selectors";
 import { signUpRequest } from "../../store/slices/account/actions";
+import { useTranslation } from "react-i18next";
 
 const SignUp = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
@@ -28,28 +30,28 @@ const SignUp = () => {
       >
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Name
+            {t("views.signUp.nameLabel")}
           </label>
           <ControlledInput
             defaultValue={name}
             onChange={setName}
-            placeholder="Mr Test"
+            placeholder={t("views.signUp.namePlaceholder")}
           />
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Email Address
+            {t("views.signUp.emailLabel")}
           </label>
           <ControlledInput
             defaultValue={email}
             onChange={setEmail}
             type="email"
-            placeholder="test@test.com"
+            placeholder={t("views.signUp.emailPlaceholder")}
           />
         </div>
         <div className="mb-6">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Password
+            {t("views.signUp.passwordLabel")}
           </label>
           <ControlledInput
             defaultValue={password}
@@ -60,12 +62,18 @@ const SignUp = () => {
         </div>
         <div className="flex items-center justify-between">
           <Btn isDisabled={signUpPending} type="submit">
-            {signUpPending ? "Loading..." : "Create an account"}
+            {signUpPending
+              ? t("shared.loadingState")
+              : t("views.signUp.submitButton")}
           </Btn>
         </div>
       </form>
-      <p className="text-center text-gray-500 text-xs">
-        Already have an account? <PlainLink to="/login">Click here</PlainLink>.
+      <p className="text-center text-gray-500 text-sm">
+        {t("views.signUp.existingAccountQuestion")}&nbsp;
+        <PlainLink to="/login">
+          {t("views.signUp.existingAccountLink")}
+        </PlainLink>
+        .
       </p>
     </>
   );

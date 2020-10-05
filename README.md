@@ -8,6 +8,8 @@ added .env files for environment variable and build / deploy scripts
 - add AWS CLI profile name in package.json scripts
 - add S3 bucket names for dev and prod in package.json scripts
 
+Added TailwindCSS following (this guide)[https://blog.logrocket.com/create-react-app-and-tailwindcss/].
+
 ## Available Scripts
 
 In the project directory, you can run:

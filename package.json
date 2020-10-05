@@ -10,6 +10,8 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "autoprefixer": "^10.0.1",
+    "postcss-cli": "^8.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
@@ -19,10 +21,12 @@
     "dotenv-cli": "^3.1.0",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "tailwindcss": "^1.8.10"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
+    "start": "npm run build:style && react-scripts start",
     "build": "react-scripts build",
     "start-dev": "dotenv -e .env.development react-scripts start",
     "deploy-dev": "dotenv -e .env.development react-scripts build && export AWS_PROFILE=[CLI profile name] && aws s3 sync ./build s3://[S3 bucket name] --acl public-read",

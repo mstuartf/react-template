@@ -9,6 +9,9 @@ added .env files for environment variable and build / deploy scripts
 - add S3 bucket names for dev and prod in package.json scripts
 
 Added TailwindCSS following (this guide)[https://blog.logrocket.com/create-react-app-and-tailwindcss/].
+Checks local storage for token and redirects to auth / unauth accordingly.
+Basic login / sign up and internal view styling.
+Verification banner.
 
 ## Available Scripts
 

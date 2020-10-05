@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./assets/logo.svg";
 
 function App() {
+  console.log(`running version ${process.env.REACT_APP_ENVIRONMENT}`);
   return (
     <div className="App">
       <header className="App-header">

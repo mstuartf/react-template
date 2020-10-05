@@ -2,16 +2,24 @@ import React, { useState } from "react";
 import Btn from "../atoms/Btn";
 import ControlledInput from "../atoms/ControlledInput";
 import PlainLink from "../atoms/PlainLink";
+import { useDispatch, useSelector } from "react-redux";
+import { selectSignUpPending } from "../../store/slices/account/selectors";
+import { signUpRequest } from "../../store/slices/account/actions";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const signUpPending = useSelector(selectSignUpPending);
+
   const handleSubmit = (evt: any) => {
     evt.preventDefault();
-    console.log(name, email, password);
+    dispatch(signUpRequest({ name, email, password }));
   };
+
   return (
     <>
       <form
@@ -51,7 +59,9 @@ const SignUp = () => {
           />
         </div>
         <div className="flex items-center justify-between">
-          <Btn type="submit">Create an account</Btn>
+          <Btn isDisabled={signUpPending} type="submit">
+            {signUpPending ? "Loading..." : "Create an account"}
+          </Btn>
         </div>
       </form>
       <p className="text-center text-gray-500 text-xs">

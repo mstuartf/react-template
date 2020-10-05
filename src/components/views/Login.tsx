@@ -13,7 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const loginPending = useSelector(selectLoginPending);
-  console.log(loginPending);
+
   const handleSubmit = (evt: any) => {
     evt.preventDefault();
     dispatch(loginRequest({ email, password }));

@@ -2,6 +2,8 @@ import {
   AccountCache,
   LoginRequestPayload,
   LoginSuccessResponse,
+  SignUpRequestPayload,
+  SignUpSuccessResponse,
 } from "./types";
 import { createStandardAction } from "typesafe-actions";
 import { APIRequestConfig } from "../../types";
@@ -25,6 +27,7 @@ const loginRequestConfig: APIRequestConfig = {
     },
   },
 };
+
 export const loginRequest = createStandardAction("@account/login").map(
   (payload: LoginRequestPayload) => ({
     payload,
@@ -34,9 +37,35 @@ export const loginRequest = createStandardAction("@account/login").map(
   })
 );
 
+const signUpRequestConfig: APIRequestConfig = {
+  url: "/accounts",
+  method: "POST",
+  authenticated: false,
+  mock: {
+    status: 200,
+    body: {
+      token: "__FAKE_TOKEN__",
+    },
+  },
+};
+
 export const loginPending = createStandardAction("@account/loginPending")();
 export const loginSuccess = createStandardAction("@account/loginSuccess")<
   LoginSuccessResponse
+>();
+
+export const signUpRequest = createStandardAction("@account/signUp").map(
+  (payload: SignUpRequestPayload) => ({
+    payload,
+    meta: {
+      request: signUpRequestConfig,
+    },
+  })
+);
+
+export const signUpPending = createStandardAction("@account/signUpPending")();
+export const signUpSuccess = createStandardAction("@account/signUpSuccess")<
+  SignUpSuccessResponse
 >();
 
 export const logoutRequest = createStandardAction("@account/logout")();

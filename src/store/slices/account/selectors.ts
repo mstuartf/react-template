@@ -20,3 +20,8 @@ export const selectLoginPending: Selector<AppState, boolean> = createSelector(
   selectAccountState,
   (account) => account.ui.loginPending
 );
+
+export const selectSignUpPending: Selector<AppState, boolean> = createSelector(
+  selectAccountState,
+  (account) => account.ui.signUpPending
+);

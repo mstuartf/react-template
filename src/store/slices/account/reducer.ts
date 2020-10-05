@@ -9,6 +9,7 @@ const initialState: AccountState = {
   cache: null,
   ui: {
     loginPending: false,
+    signUpPending: false,
   },
 };
 
@@ -31,6 +32,13 @@ const reducer = createReducer(initialState)
       loginPending: true,
     },
   }))
+  .handleAction(actions.signUpPending, (state) => ({
+    ...state,
+    ui: {
+      ...state.ui,
+      signUpPending: true,
+    },
+  }))
   .handleAction(actions.loginSuccess, (state, { payload: { token } }) => ({
     ...state,
     cache: {
@@ -40,6 +48,17 @@ const reducer = createReducer(initialState)
     ui: {
       ...state.ui,
       loginPending: false,
+    },
+  }))
+  .handleAction(actions.signUpSuccess, (state, { payload: { token } }) => ({
+    ...state,
+    cache: {
+      ...(state.cache || {}),
+      token,
+    },
+    ui: {
+      ...state.ui,
+      signUpPending: false,
     },
   }))
   .handleAction(actions.logoutRequest, (state) => ({

@@ -15,6 +15,7 @@ export const localStorageMiddleware: Middleware = (store) => (next) => (
       return store.dispatch(actions.loadCacheSuccess(cache));
 
     case getType(actions.loginSuccess):
+    case getType(actions.signUpSuccess):
       const { account } = store.getState();
       setCache(account.cache);
       return;

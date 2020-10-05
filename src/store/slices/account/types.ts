@@ -3,6 +3,7 @@ export interface AccountState {
   cache: AccountCache | null;
   ui: {
     loginPending: boolean;
+    signUpPending: boolean;
   };
 }
 
@@ -16,5 +17,15 @@ export interface LoginRequestPayload {
 }
 
 export interface LoginSuccessResponse {
+  token: string;
+}
+
+export interface SignUpRequestPayload {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface SignUpSuccessResponse {
   token: string;
 }

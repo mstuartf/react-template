@@ -15,3 +15,8 @@ export const selectIsLoadingCache: Selector<AppState, boolean> = createSelector(
   selectAccountState,
   (account) => account.isLoadingCache
 );
+
+export const selectLoginPending: Selector<AppState, boolean> = createSelector(
+  selectAccountState,
+  (account) => account.ui.loginPending
+);

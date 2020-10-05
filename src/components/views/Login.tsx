@@ -2,14 +2,21 @@ import React, { useState } from "react";
 import Btn from "../atoms/Btn";
 import PlainLink from "../atoms/PlainLink";
 import ControlledInput from "../atoms/ControlledInput";
+import { useDispatch, useSelector } from "react-redux";
+import { loginRequest } from "../../store/slices/account/actions";
+import { selectLoginPending } from "../../store/slices/account/selectors";
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const loginPending = useSelector(selectLoginPending);
+  console.log(loginPending);
   const handleSubmit = (evt: any) => {
     evt.preventDefault();
-    console.log(email, password);
+    dispatch(loginRequest({ email, password }));
   };
 
   return (
@@ -41,7 +48,9 @@ const Login = () => {
           />
         </div>
         <div className="flex items-center justify-between">
-          <Btn type="submit">Sign In</Btn>
+          <Btn isDisabled={loginPending} type="submit">
+            {loginPending ? "Loading..." : "Sign In"}
+          </Btn>
           <PlainLink to="https://www.google.com">Forgot Password?</PlainLink>
         </div>
       </form>

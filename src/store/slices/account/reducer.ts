@@ -7,6 +7,9 @@ export type AccountAction = ActionType<typeof actions>;
 const initialState: AccountState = {
   isLoadingCache: true,
   cache: null,
+  ui: {
+    loginPending: false,
+  },
 };
 
 const reducer = createReducer(initialState)
@@ -20,6 +23,28 @@ const reducer = createReducer(initialState)
     cache: {
       ...payload,
     },
+  }))
+  .handleAction(actions.loginPending, (state) => ({
+    ...state,
+    ui: {
+      ...state.ui,
+      loginPending: true,
+    },
+  }))
+  .handleAction(actions.loginSuccess, (state, { payload: { token } }) => ({
+    ...state,
+    cache: {
+      ...(state.cache || {}),
+      token,
+    },
+    ui: {
+      ...state.ui,
+      loginPending: false,
+    },
+  }))
+  .handleAction(actions.logoutRequest, (state) => ({
+    ...state,
+    cache: null,
   }));
 
 export { reducer as accountReducer };

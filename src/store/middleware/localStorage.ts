@@ -2,7 +2,7 @@ import { Middleware } from "redux";
 import * as actions from "../slices/account/actions";
 import { RootAction } from "../actions";
 import { getType } from "typesafe-actions";
-import { getCache } from "../../utilities/localStorage";
+import { getCache, setCache, deleteCache } from "../../utilities/localStorage";
 
 export const localStorageMiddleware: Middleware = (store) => (next) => (
   action: RootAction
@@ -12,17 +12,16 @@ export const localStorageMiddleware: Middleware = (store) => (next) => (
   switch (action.type) {
     case getType(actions.loadCache):
       const cache = getCache();
-      return next(actions.loadCacheSuccess(cache));
+      return store.dispatch(actions.loadCacheSuccess(cache));
 
-    // case AccountActionTypes.UNAUTHORIZED:
-    // case AccountActionTypes.LOGOUT:
-    //     deleteToken();
-    //     return next(action);
+    case getType(actions.loginSuccess):
+      const { account } = store.getState();
+      setCache(account.cache);
+      return;
 
-    // case AccountActionTypes.LOGIN__SUCCESS:
-    // case AccountActionTypes.SIGN_UP__SUCCESS:
-    //     setToken(action.payload.token);
-    //     return next(action);
+    case getType(actions.logoutRequest):
+      deleteCache();
+      return;
 
     default:
       return;

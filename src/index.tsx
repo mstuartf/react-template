@@ -3,10 +3,22 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "./styles/tailwind.css";
+import { configureStore } from "./store";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+
+const store = configureStore();
 
 // wrap in a render method to support hot module reloading
 const render = (Component: any) => {
-  return ReactDOM.render(<Component />, document.getElementById("root"));
+  return ReactDOM.render(
+    <Provider store={store}>
+      <Router>
+        <Component />
+      </Router>
+    </Provider>,
+    document.getElementById("root")
+  );
 };
 
 render(App);

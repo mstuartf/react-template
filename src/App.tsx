@@ -1,11 +1,15 @@
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import React, { useEffect } from "react";
 import AuthCheck from "./components/layout/AuthCheck";
+import { useDispatch } from "react-redux";
+import { loadCache } from "./store/slices/account/actions";
 
-const App = () => (
-  <Router>
-    <AuthCheck />
-  </Router>
-);
+const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadCache());
+  }, [dispatch]);
+
+  return <AuthCheck />;
+};
 
 export default App;
